@@ -1,0 +1,20 @@
+
+
+
+{% extends "_registration_base.html" %} 
+
+{% block title %}<title>Logged out</title>{% endblock %}
+
+{% block content %}
+
+<div class="container"></div>
+
+
+    <form class="form-signin">
+
+        <h2 class="form-signin-heading">You are logged out</h2>
+        <a href="{% url 'login'%}" class="btn btn-lg btn-primary btn-block" role="button" type="submit" value="login">Click here to sign in again.</a>
+
+    </form>
+
+{% endblock %}

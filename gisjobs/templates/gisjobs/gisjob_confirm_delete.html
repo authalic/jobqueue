@@ -1,0 +1,17 @@
+{% extends "gisjobs/base.html" %}
+
+{% block content %}
+
+    <h1>Delete Request</h1>
+
+    <p>Are you sure you want to delete the request:</p>
+    <p><h2> {{ gisjob.jobname }} </h2></p>
+
+    <form action="" method="POST">
+    {% csrf_token %}
+
+        <button class="btn btn-danger" type="submit" value="login">Yes, Delete</button>
+
+    </form>
+
+{% endblock %}

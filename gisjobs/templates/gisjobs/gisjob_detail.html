@@ -1,0 +1,50 @@
+{% extends "gisjobs/base.html" %}
+
+{% block content %}
+
+    <h3>GIS Job {{ gisjob.pk }} - Details</h3>
+
+
+    <table class='table table-sm table-hover'>
+        <tr>
+            <td>Job Name</td>
+            <td>{{ gisjob.jobname }}</td>
+        </tr>
+        <tr>
+            <td>Project ID</td>
+            <td>{{ gisjob.project_id }}</td>
+        </tr>
+        <tr>
+            <td>Submitted by</td>
+            <td>{{ gisjob.submitted_by }}</td>
+        </tr>
+        <tr>
+            <td>Assigned to</td>
+            <td>{{ gisjob.assigned_to }}</td>
+        </tr>
+        <tr>
+            <td>Submitted</td>
+            <td>{{ gisjob.date_submitted }}</td>
+        </tr>
+        <tr>
+            <td>Assigned</td>
+            <td>{{ gisjob.date_assigned }}</td>
+        </tr>
+        <tr>
+            <td>Due Date</td>
+            <td>{{ gisjob.date_due }}</td>
+        </tr>
+    </table>
+    <h4>Description</h4>
+    {{ gisjob.description }}
+
+    {% if gisjob.submitted_by == user %}
+
+        <div>
+            <a href="{% url 'request-update' gisjob.pk %}" role="button" class="btn btn-primary">Edit</a>
+            <a href="{% url 'request-delete' gisjob.pk %}" role="button" class="btn btn-danger">Delete</a>
+        </div>
+
+    {% endif %}
+
+{% endblock %}

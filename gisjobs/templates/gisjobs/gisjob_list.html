@@ -1,0 +1,41 @@
+{% extends "gisjobs/base.html" %}
+
+{% block title %}<title>GIS Job List Page</title>{% endblock %}
+
+{% block content %}
+
+    <h3>GIS Job List</h3>
+
+    {% if gisjob_list %}
+        <table class='table table-sm table-hover'>
+            <thead class='thead-light'>
+                <tr>
+                    <th scope='col'>#</th>
+                    <th scope='col'>Job Name</th>
+                    <th scope='col'>Project ID</th>
+                    <th scope='col'>Submitted by</th>
+                    <th scope='col'>Assigned to</th>
+                    <th scope='col'>Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gisjob in gisjob_list %}
+                
+                    <tr>
+                        <td><a href=" {% url 'job-detail' gisjob.pk %}">{{ gisjob.pk }}</a></td>
+                        <td>{{ gisjob.jobname }}</td>
+                        <td>{{ gisjob.project_id }}</td>
+                        <td>{{ gisjob.submitted_by }}</td>
+                        <td>{{ gisjob.assigned_to }}</td>
+                        <td>{{ gisjob.date_due }}</td>
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p>There are no active GIS job requests in this list</p>
+    {% endif%}
+
+{% endblock %}
